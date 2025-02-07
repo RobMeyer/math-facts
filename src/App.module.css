@@ -1,33 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 .App {
   text-align: center;
 }
 
-.logo {
-  animation: logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.Page {}
+
+.CardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: .0625in;
+
+  width: fit-content;
+  height: 100%;
+  margin: 0 auto;
+
+  box-sizing: border-box;
+  border: 1px solid rgb(239, 239, 239);
 }
 
-.header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.CardGrid .Card {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  aspect-ratio: 4 / 3;
 }
 
-.link {
-  color: #b318f0;
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media print {
+  :root {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
-  to {
-    transform: rotate(360deg);
+
+  @page {
+    size: letter portrait;
+    margin: 15mm 0mm 15mm 0mm;
+  }
+
+  .App {
+    overflow-x: hidden;
+  }
+
+  .Page {
+    height: 100vh;
+    width: 100vw;
+    /* fill the print page so content can be bottom-aligned  */
   }
 }

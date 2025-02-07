@@ -1,25 +1,17 @@
-import type { Component } from 'solid-js';
+import { createSignal, type Component } from 'solid-js';
 
-import logo from './logo.svg';
 import styles from './App.module.css';
+import PrintCards from './PrintCards';
+
+export type Operator = "addition" | "subtraction" | "multiplication" | "division";
 
 const App: Component = () => {
+  const [getOperator, setOperator] = createSignal<Operator>("addition");
+  const [getSetNumber, setSetNumber] = createSignal<number>(6);
+
   return (
     <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
+      <PrintCards getOperator={getOperator} getSetNumber={getSetNumber} />
     </div>
   );
 };
